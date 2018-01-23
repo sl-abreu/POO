@@ -10,38 +10,50 @@ package poo;
  *
  * @author edi
  */
-public class Alumno {
+public class Alumno extends Persona{
     private int clavUn;
-    private String nombre;
+    private String carrera;
     private double[] califs;
     private int totalCalifs;
     private static int serie=100;
 
     public Alumno() {
+        super();
         this.clavUn=serie;
         serie++;
         this.totalCalifs=0;
         this.califs=new double[50];
     }
-    public Alumno(String nombre) {
-        this();
-        this.nombre = nombre;
+
+    public Alumno(String carrera, String nombre, String domicilio, int edad) {
+        super(nombre, domicilio, edad);
+        this.carrera = carrera;
+        
+        this.clavUn=serie;
+        serie++;
+        this.totalCalifs=0;
+        this.califs=new double[50];
     }
 
     public int getClavUn() {
         return clavUn;
     }
-    public String getNombre() {
-        return nombre;
+    public String getCarrera() {
+        return carrera;
     }
     public int getTotalCalifs() {
         return totalCalifs;
     }
-
     
+    public String toString(){
+        StringBuilder cad=new StringBuilder();
+        cad.append(super.toString());
+        cad.append("\nCarrera: "+carrera);
+        return cad.toString();
+    }
     
-    @Override
-    public String toString() {
-        return "Alumno{" + "clavUn=" + clavUn + ", nombre=" + nombre + ", califs=" + califs + ", totalCalifs=" + totalCalifs + '}';
+    public boolean equals(Object otro){
+        Alumno al=(Alumno) otro;
+        return this.getNombre().equalsIgnoreCase(al.getNombre()) && this.getCarrera().equalsIgnoreCase(al.getCarrera());
     }
 }
