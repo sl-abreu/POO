@@ -1,4 +1,4 @@
-package poo;
+package Herencia;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author robot
  */
 public class Persona {
-    private String nombre;
+    protected String nombre;
     private String domicilio;
     private int edad;
 

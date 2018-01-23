@@ -1,4 +1,4 @@
-package poo;
+package Herencia;
 
 /**
  *
@@ -10,25 +10,25 @@ public class Administrativo extends Empleado{
     
     public Administrativo(){
     }
-    public Administrativo(String nombreEmpleado,double sueldoBase,String departamento,String telefono){
-        super(nombreEmpleado,sueldoBase);
-        this.departamento=departamento;
-        this.telefono=telefono;
+    public Administrativo(String nombre, String domicilio, int edad, double sueldoBase, String departamento, String telefono) {
+        super(nombre, domicilio, edad, sueldoBase);
+        this.departamento = departamento;
+        this.telefono = telefono;
     }
+   
     
     @Override
     public String toString(){
         StringBuilder cad=new StringBuilder();
         
         cad.append(super.toString());
-        cad.append("\nAdministrativo: ");
         cad.append("\n\tDepartamento: "+departamento);
         cad.append("\n\t    Teléfono: "+telefono);
         return cad.toString();
     }
     
     public static void main(String[] args) {
-        Administrativo ad=new Administrativo("Alberto",5000.0,"Finanzas","5530353780");
+        Administrativo ad=new Administrativo("Alberto","Calle sin nombre",43,5000.0,"Finanzas","5530353780");
         
         System.out.println(ad.toString());
     }

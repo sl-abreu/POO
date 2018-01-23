@@ -1,4 +1,4 @@
-package poo;
+package Herencia;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +18,6 @@ public class Alumno extends Persona{
     private static int serie=100;
 
     public Alumno() {
-        super();
         this.clavUn=serie;
         serie++;
         this.totalCalifs=0;
@@ -54,6 +53,6 @@ public class Alumno extends Persona{
     
     public boolean equals(Object otro){
         Alumno al=(Alumno) otro;
-        return this.getNombre().equalsIgnoreCase(al.getNombre()) && this.getCarrera().equalsIgnoreCase(al.getCarrera());
+        return this.nombre.equalsIgnoreCase(al.nombre) && this.getCarrera().equalsIgnoreCase(al.getCarrera());
     }
 }

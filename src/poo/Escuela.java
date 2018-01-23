@@ -5,6 +5,8 @@
  */
 package poo;
 
+import Herencia.Alumno;
+
 /**
  *
  * @author edi

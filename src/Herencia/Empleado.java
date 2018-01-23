@@ -1,12 +1,11 @@
-package poo;
+package Herencia;
 
 /**
  *
  * @author SLGA
  */
-public class Empleado {
+public class Empleado extends Persona{
     private int claveEmpleado;
-    private String nombreEmpleado;
     private double sueldoBase;
     private static int serie=100;
     
@@ -14,15 +13,14 @@ public class Empleado {
         claveEmpleado=serie;
         serie++;
     }
-    public Empleado(String nombreEmpleado,double sueldoBase){
-        this();
-        this.nombreEmpleado=nombreEmpleado;
+    public Empleado(String nombre,String domicilio,int edad,double sueldoBase){
+        super(nombre,domicilio,edad);
+        
         this.sueldoBase=sueldoBase;
+        claveEmpleado=serie;
+        serie++;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
-    }
     public double getSueldoBase() {
         return sueldoBase;
     }
@@ -31,8 +29,7 @@ public class Empleado {
     public String toString(){
         StringBuilder cad=new StringBuilder();
         
-        cad.append("Empleado: "+claveEmpleado);
-        cad.append("\n\t     Nombre: "+nombreEmpleado);
+        cad.append(super.toString());
         cad.append("\n\tSueldo base: "+sueldoBase);
         return cad.toString();
     }
@@ -65,8 +62,8 @@ public class Empleado {
     }
     
     public static void main(String[] args) {
-        Empleado em=new Empleado("Martino Aparicio",5000.0);
-        Empleado em2=new Empleado("Juan Sancho de la Mancha",7500.0);
+        Empleado em=new Empleado("Martino Aparicio","El olvido",39,5000.0);
+        Empleado em2=new Empleado("Juan Sancho de la Mancha","Satélite",56,7500.0);
         
         System.out.println(em.toString());
         System.out.println(em2.toString());
