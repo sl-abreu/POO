@@ -10,49 +10,28 @@ package Herencia;
  *
  * @author edi
  */
-public class Alumno extends Persona{
-    private int clavUn;
-    private String carrera;
-    private double[] califs;
-    private int totalCalifs;
-    private static int serie=100;
+public class Alumno{
+    String nombre;
+    String curp;
+    String fechaNac;
+    String nombrePadre;
+    String nombreMadre;
+    String nombreTutor;
+    String grado;
 
     public Alumno() {
-        this.clavUn=serie;
-        serie++;
-        this.totalCalifs=0;
-        this.califs=new double[50];
     }
-
-    public Alumno(String carrera, String nombre, String domicilio, int edad) {
-        super(nombre, domicilio, edad);
-        this.carrera = carrera;
-        
-        this.clavUn=serie;
-        serie++;
-        this.totalCalifs=0;
-        this.califs=new double[50];
+    public Alumno(String nombre, String curp, int mes, int dia, int año, String nombrePadre, String nombreMadre) {
+        this.nombre = nombre;
+        this.curp = curp;
+        this.fechaNac = mes+"/"+dia+"/"+año;
+        this.nombrePadre = nombrePadre;
+        this.nombreMadre = nombreMadre;
     }
-
-    public int getClavUn() {
-        return clavUn;
-    }
-    public String getCarrera() {
-        return carrera;
-    }
-    public int getTotalCalifs() {
-        return totalCalifs;
-    }
-    
-    public String toString(){
-        StringBuilder cad=new StringBuilder();
-        cad.append(super.toString());
-        cad.append("\nCarrera: "+carrera);
-        return cad.toString();
-    }
-    
-    public boolean equals(Object otro){
-        Alumno al=(Alumno) otro;
-        return this.nombre.equalsIgnoreCase(al.nombre) && this.getCarrera().equalsIgnoreCase(al.getCarrera());
+     public Alumno(String nombre, String curp, int mes, int dia, int año, String nombreTutor) {
+        this.nombre = nombre;
+        this.curp = curp;
+        this.fechaNac = mes+"/"+dia+"/"+año;
+        this.nombreTutor = nombreTutor;
     }
 }
