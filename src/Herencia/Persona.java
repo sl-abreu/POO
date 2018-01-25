@@ -9,14 +9,14 @@ import java.util.Objects;
 public class Persona {
     protected String nombre;
     private String domicilio;
-    private int edad;
+    private int añoNacimiento;
 
     public Persona() {
     }
-    public Persona(String nombre, String domicilio, int edad) {
+    public Persona(String nombre, String domicilio, int añoNacimiento) {
         this.nombre = nombre;
         this.domicilio = domicilio;
-        this.edad = edad;
+        this.añoNacimiento = añoNacimiento;
     }
 
     public String getNombre() {
@@ -28,12 +28,13 @@ public class Persona {
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
-    public int getEdad() {
-        return edad;
+    public int getAñoNacimiento() {
+        return añoNacimiento;
     }
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setAñoNacimiento(int añoNacimiento) {
+        this.añoNacimiento = añoNacimiento;
     }
+   
 
     @Override
     public boolean equals(Object obj) {
@@ -55,7 +56,12 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", domicilio=" + domicilio + ", edad=" + edad + '}';
+        StringBuilder cad=new StringBuilder();
+        
+        cad.append("           Nombre: "+nombre);
+        cad.append("\n        Domicilio: "+domicilio);
+        cad.append("\nAño de nacimiento: "+añoNacimiento);
+        return cad.toString();
     }
     
 }

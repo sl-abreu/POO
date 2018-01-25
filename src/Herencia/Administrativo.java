@@ -22,13 +22,13 @@ public class Administrativo extends Empleado{
         StringBuilder cad=new StringBuilder();
         
         cad.append(super.toString());
-        cad.append("\n\tDepartamento: "+departamento);
-        cad.append("\n\t    Teléfono: "+telefono);
+        cad.append("\n\t\tDepartamento: "+departamento);
+        cad.append("\n\t\t    Teléfono: "+telefono);
         return cad.toString();
     }
     
     public static void main(String[] args) {
-        Administrativo ad=new Administrativo("Alberto","Calle sin nombre",43,5000.0,"Finanzas","5530353780");
+        Administrativo ad=new Administrativo("Alberto","Calle sin nombre",1943,5000.0,"Finanzas","5530353780");
         
         System.out.println(ad.toString());
     }

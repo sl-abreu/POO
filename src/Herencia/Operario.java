@@ -31,7 +31,7 @@ public class Operario extends Empleado {
         StringBuilder cad=new StringBuilder();
         
         cad.append(super.toString());
-        cad.append("\n\tHoras extras: "+horasExtra);
+        cad.append("\n\t\tHoras extras: "+horasExtra);
         return cad.toString();
     }
     

@@ -4,7 +4,7 @@ package Herencia;
  *
  * @author SLGA
  */
-public class Empleado extends Persona{
+public class Empleado extends Persona implements Comparable{
     private int claveEmpleado;
     private double sueldoBase;
     private static int serie=100;
@@ -13,12 +13,15 @@ public class Empleado extends Persona{
         claveEmpleado=serie;
         serie++;
     }
-    public Empleado(String nombre,String domicilio,int edad,double sueldoBase){
-        super(nombre,domicilio,edad);
+    public Empleado(String nombre,String domicilio,int añoNacimiento,double sueldoBase){
+        super(nombre,domicilio,añoNacimiento);
         
         this.sueldoBase=sueldoBase;
         claveEmpleado=serie;
         serie++;
+    }
+    public Empleado(int claveEmpleado){
+        this.claveEmpleado=claveEmpleado;
     }
 
     public double getSueldoBase() {
@@ -29,9 +32,14 @@ public class Empleado extends Persona{
     public String toString(){
         StringBuilder cad=new StringBuilder();
         
-        cad.append(super.toString());
-        cad.append("\n\tSueldo base: "+sueldoBase);
+        cad.append("Clave de empleado: "+claveEmpleado);
+        cad.append("\n"+super.toString());
+        cad.append("\n\t      Sueldo base: "+sueldoBase);
         return cad.toString();
+    }
+    public int compareTo(Object otro){
+        Empleado em=(Empleado)otro;
+        return this.claveEmpleado-em.claveEmpleado;
     }
     @Override
     public int hashCode() {
@@ -62,11 +70,11 @@ public class Empleado extends Persona{
     }
     
     public static void main(String[] args) {
-        Empleado em=new Empleado("Martino Aparicio","El olvido",39,5000.0);
-        Empleado em2=new Empleado("Juan Sancho de la Mancha","Satélite",56,7500.0);
+        Empleado em=new Empleado("Martino Aparicio","El olvido",1939,5000.0);
+        Empleado em2=new Empleado("Juan Sancho de la Mancha","Satélite",1956,7500.0);
         
         System.out.println(em.toString());
-        System.out.println(em2.toString());
+        System.out.println("\n"+em2.toString());
         
         System.out.println(em.calculaSalario(0.5, 0.2));
         System.out.println(em2.calculaSalario(0.5, 0.2));
