@@ -26,7 +26,7 @@ public class Escuela {
         this.nombre = nombre;
         this.direccion = direccion;
     }
-    
+    /*
     public String consultaMasAprob(){
         String res=null;
         
@@ -40,5 +40,5 @@ public class Escuela {
         }
         return res;
     }
-    
+    */
 }
