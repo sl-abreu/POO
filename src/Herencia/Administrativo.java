@@ -15,7 +15,6 @@ public class Administrativo extends Empleado{
         this.departamento = departamento;
         this.telefono = telefono;
     }
-   
     
     @Override
     public String toString(){

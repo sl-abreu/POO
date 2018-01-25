@@ -27,6 +27,9 @@ public class Empleado extends Persona implements Comparable{
     public double getSueldoBase() {
         return sueldoBase;
     }
+    public void setSueldoBase(double sueldoBase) {
+        this.sueldoBase = sueldoBase;
+    }
     
     @Override
     public String toString(){
@@ -53,9 +56,6 @@ public class Empleado extends Persona implements Comparable{
             return true;
         }
         if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
             return false;
         }
         final Empleado other = (Empleado) obj;
