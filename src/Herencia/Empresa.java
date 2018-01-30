@@ -40,13 +40,12 @@ public class Empresa {
         return res;
     }
     private int getPosEmpleado(int claveEmpleado){
-        Empleado em=new Empleado(claveEmpleado);
         int res;
         int ini=0,fin=numEmps-1,mitad;
         mitad=(ini+fin)/2;
         
-        while(ini<=fin && !empleados[mitad].equals(em)){
-            if(em.compareTo(empleados[mitad])>0)
+        while(ini<=fin && empleados[mitad].getClaveEmpleado()!=claveEmpleado){
+            if(claveEmpleado>empleados[mitad].getClaveEmpleado())
                 ini=mitad+1;
             else
                 fin=mitad-1;

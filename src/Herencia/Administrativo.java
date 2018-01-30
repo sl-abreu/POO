@@ -26,9 +26,8 @@ public class Administrativo extends Empleado{
         return cad.toString();
     }
     
-    public static void main(String[] args) {
-        Administrativo ad=new Administrativo("Alberto","Calle sin nombre",1943,5000.0,"Finanzas","5530353780");
-        
-        System.out.println(ad.toString());
+    @Override
+    public double calculaSalario(double prestac, double deduc) {
+        return sueldoBase*(1+prestac-deduc);
     }
 }

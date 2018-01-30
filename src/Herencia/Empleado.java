@@ -4,26 +4,26 @@ package Herencia;
  *
  * @author SLGA
  */
-public class Empleado extends Persona implements Comparable{
+public abstract class Empleado extends Persona implements Comparable{
     private int claveEmpleado;
-    private double sueldoBase;
+    protected double sueldoBase;
     private static int serie=100;
     
-    public Empleado(){
+    protected Empleado(){
         claveEmpleado=serie;
         serie++;
     }
-    public Empleado(String nombre,String domicilio,int añoNacimiento,double sueldoBase){
+    protected Empleado(String nombre,String domicilio,int añoNacimiento,double sueldoBase){
         super(nombre,domicilio,añoNacimiento);
         
         this.sueldoBase=sueldoBase;
         claveEmpleado=serie;
         serie++;
     }
-    public Empleado(int claveEmpleado){
-        this.claveEmpleado=claveEmpleado;
-    }
 
+    public int getClaveEmpleado() {
+        return claveEmpleado;
+    }
     public double getSueldoBase() {
         return sueldoBase;
     }
@@ -65,18 +65,6 @@ public class Empleado extends Persona implements Comparable{
         return true;
     }
     
-    public double calculaSalario(double prestac,double deduc){
-        return sueldoBase*(1+prestac-deduc);
-    }
+    public abstract double calculaSalario(double prestac,double deduc);
     
-    public static void main(String[] args) {
-        Empleado em=new Empleado("Martino Aparicio","El olvido",1939,5000.0);
-        Empleado em2=new Empleado("Juan Sancho de la Mancha","Satélite",1956,7500.0);
-        
-        System.out.println(em.toString());
-        System.out.println("\n"+em2.toString());
-        
-        System.out.println(em.calculaSalario(0.5, 0.2));
-        System.out.println(em2.calculaSalario(0.5, 0.2));
-    }
 }

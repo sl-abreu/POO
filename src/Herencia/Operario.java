@@ -23,7 +23,11 @@ public class Operario extends Empleado {
     }
 
     public double calculaSalario(double prestac,double deduc,double precioHE){
-        return super.calculaSalario(prestac, deduc)+horasExtra*precioHE;
+        return calculaSalario(prestac,deduc)+horasExtra*precioHE;
+    }
+    @Override
+    public double calculaSalario(double prestac, double deduc) {
+        return sueldoBase*(1+prestac-deduc);
     }
     
     @Override
