@@ -1,6 +1,6 @@
-package Herencia;
+package Polimorfismo;
 
-import ClasesUtiles.ManejadorArreglosGenerico;
+import Herencia.*;
 
 /**
  *
@@ -81,7 +81,7 @@ public class Empresa {
         StringBuilder cad=new StringBuilder();
        
         for(int i=0;i<numEmps;i++)
-            if(empleados[i].getClass()==new Administrativo().getClass()){
+            if(empleados[i] instanceof Administrativo){
                 cad.append("\n"+empleados[i].getNombre());
                 cad.append("\t$"+empleados[i].getSueldoBase());
             }
@@ -91,11 +91,25 @@ public class Empresa {
         int pos=getPosEmpleado(clave);
         boolean res=false;
         
-        if(pos>=0 && empleados[pos].getClass()==new Administrativo().getClass()){
+        if(pos>=0 && empleados[pos].getClass().getSimpleName().equals("Administrativo")){
             double sueldo=empleados[pos].getSueldoBase();
             sueldo*=1+por100;
             empleados[pos].setSueldoBase(sueldo);
             res=true;
+        }
+        return res;
+    }
+    public boolean actualizaDepartamentoAdmin(int clave,String departamento){
+        int pos=getPosEmpleado(clave);
+        boolean res=false;
+        
+        if(pos>=0){
+            try{
+                ((Administrativo) empleados[pos]).setDepartamento(departamento);
+                res=true;
+            }catch(Exception e){
+                System.err.println("LA CLAVE NO CORRESPONDE A UN ADMINISTRATIVO");
+            }
         }
         return res;
     }
@@ -122,5 +136,7 @@ public class Empresa {
         System.out.println(emp1.getPosEmpleado(102));
         System.out.println(emp1.actualizaSueldoAdmin(102, 0.2));
         System.out.println(emp1.reporteAdmins());
+        System.out.println(emp1.actualizaDepartamentoAdmin(101, "Sistemas"));
+        System.out.println(emp1.toString());
     }
 }

@@ -15,6 +15,23 @@ public class Administrativo extends Empleado{
         this.departamento = departamento;
         this.telefono = telefono;
     }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
     
     @Override
     public String toString(){
