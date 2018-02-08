@@ -68,7 +68,34 @@ public class EjecutaFiguras {
             res=figs[pos].toString();
         return res;
     }
-    public static void main(String[] args) {
+    public int eliminaEquilateros(){
+        int i=0,num=0;
         
+        while(i<total){
+            if(figs[i] instanceof Triangulo && ((Triangulo)figs[i]).esEquilatero()){
+                total--;
+                figs[i]=figs[total];
+                figs[total]=null;
+                num++;
+            }
+            else
+                i++;
+        }
+        return num;
+    }
+    public static void main(String[] args) {
+        EjecutaFiguras ej=new EjecutaFiguras();
+        ej.altaFig(7);
+        ej.altaFig(3);
+        ej.altaFig(4.2, 7.3);
+        ej.altaFig(3, 3);
+        ej.altaFig(4.2);
+        ej.altaFig(3, 3, 3);
+        ej.altaFig(3, 4, 5);
+        ej.altaFig(4, 4, 4);
+        ej.altaFig(6, 3);
+        ej.altaFig(5, 5, 5);
+        System.out.println(ej.infoCirculoMasGrande());
+        System.out.println(ej.eliminaEquilateros());
     }
 }

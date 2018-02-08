@@ -58,12 +58,16 @@ public abstract class Empleado extends Persona implements Comparable{
         if (obj == null) {
             return false;
         }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
         final Empleado other = (Empleado) obj;
         if (this.claveEmpleado != other.claveEmpleado) {
             return false;
         }
         return true;
     }
+   
     
     public abstract double calculaSalario(double prestac,double deduc);
     
