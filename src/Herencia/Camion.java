@@ -4,7 +4,7 @@ package Herencia;
  *
  * @author robot
  */
-public abstract class Camion {
+public abstract class Camion implements java.io.Serializable{
     private String marca;
     private String numMotor;
     private String placas;

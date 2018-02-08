@@ -19,6 +19,6 @@ public class CamionEscolar extends CamionPasajeros{
     }
     
     public double calculaCostoServicio(){
-        return super.calculaCostoServicio(250);
+        return calculaCostoServicio(250);
     }
 }
