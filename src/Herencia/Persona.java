@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author robot
  */
-public class Persona {
+public class Persona implements java.io.Serializable{
     protected String nombre;
     private String domicilio;
     private int añoNacimiento;

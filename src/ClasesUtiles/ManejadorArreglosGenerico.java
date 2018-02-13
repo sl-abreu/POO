@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class ManejadorArreglosGenerico {
 
+        //comparaciones dentro de un arreglo
 	public static <T extends Comparable<T>> int mayor(T[] arr,int n){
 		int indMay=0;
 		
@@ -75,7 +76,8 @@ public class ManejadorArreglosGenerico {
 				inds.add(i);
 		return inds;
 	}
-	public static <T> void swap(T[] arr,int ind1,int ind2) {
+	//cambios de lugar
+        public static <T> void swap(T[] arr,int ind1,int ind2) {
 		T temp;
 		
 		temp=arr[ind1];
@@ -87,6 +89,7 @@ public class ManejadorArreglosGenerico {
 			swap(arr,i,n-i-1);
 		}		
 	}
+        //comparaciones entre arreglos
 	public static <T extends Comparable<T>> int union(T[] arrA,T[] arrB,int nA,int nB,T[] arrR) {
 		int i=0,j=0,k=0;
 		
@@ -132,7 +135,8 @@ public class ManejadorArreglosGenerico {
 		}
 		return k;
 	}
-	public static <T> void kCorrimientosIzq(T[] arr,int n,int k) {
+	//corrimientos
+        public static <T> void kCorrimientosIzq(T[] arr,int n,int k) {
 		for(int i=0;i<n-k;i++)
 			arr[i]=arr[i+k];
 		for(int j=n-k;j<n;j++)
@@ -163,7 +167,8 @@ public class ManejadorArreglosGenerico {
 			arr[i]=arr[i-1];
 		arr[ini]=null;
 	}
-	public static <T extends Comparable<T>> void seleccionDirecta(T[] arr,int n) {
+	//ordenaciones
+        public static <T extends Comparable<T>> void seleccionDirecta(T[] arr,int n) {
 		int indMen;
 		
 		for(int i=0;i<n-1;i++) {
@@ -171,19 +176,29 @@ public class ManejadorArreglosGenerico {
 			swap(arr,i,indMen);
 		}
 	}
-	public static <T> int eliminaRepetidosOrden(T[] arr,int n) {
-		int i=0;
-		
-		while(i<n-1) {
-			if(arr[i].equals(arr[i+1])) {
-				kCorrimientosIzq(arr,n,1,i);
-				n--;
-			}
-			i++;
-		}
-		return n;
-	}
-	public static <T> int busSecDes(T[] arr,int n,T x) {
+        public static <T extends Comparable<T>> void quickSort(T[] arr,int ini,int fin){
+            int i=ini,j=fin;
+            T pivot=arr[(ini+fin)/2];
+            
+            while(i<=j){
+                while(pivot.compareTo(arr[i])>0)
+                    i++;
+                while(pivot.compareTo(arr[j])<0)
+                    j--;
+                if(i<=j){
+                    swap(arr,i,j);
+                    i++;
+                    j--;
+                }
+            }
+            if(ini<j)
+                quickSort(arr,ini,j);
+            if(i<fin)
+                quickSort(arr,i,fin);
+        }
+                        //proximamente mergeSort
+	//búsquedas
+        public static <T> int busSecDes(T[] arr,int n,T x) {
 		int i=0;
 		
 		while(i<n && !arr[i].equals(x))
@@ -218,7 +233,8 @@ public class ManejadorArreglosGenerico {
 			res=mitad;
 		return res;
 	}
-	public static <T extends Comparable<T>> boolean arrsCircIg(T[] arrA,int nA,T[] arrB,int nB) {
+	//otros
+        public static <T extends Comparable<T>> boolean arrsCircIg(T[] arrA,int nA,T[] arrB,int nB) {
 		boolean res=false;
 		
 		if(nA==nB) {
@@ -236,8 +252,7 @@ public class ManejadorArreglosGenerico {
 			}
 		}
 		return res;
-	}
-	
+	}	
 	public static <T> T masRepetido(T[] arr,int n) {
 		//soluci�n poco eficiente, pero que ejemplifica el uso de arreglos paralelos
 		T[] aux=arr;
@@ -260,4 +275,33 @@ public class ManejadorArreglosGenerico {
 		}
 		return aux[mayor(cont,par+1)];
 	}
+        public static <T> int eliminaRepetidosOrden(T[] arr,int n) {
+		int i=0;
+		
+		while(i<n-1) {
+			if(arr[i].equals(arr[i+1])) {
+				kCorrimientosIzq(arr,n,1,i);
+				n--;
+			}
+			i++;
+		}
+		return n;
+	}
+        public static <T> String arregloToString(T[] arr,int n){
+            StringBuilder cad=new StringBuilder();
+            
+            cad.append("[");
+            for(int i=0;i<n-1;i++)
+                cad.append(arr[i].toString()+" ,");
+            cad.append(arr[n-1].toString()+"]");
+            return cad.toString();
+        }
+        
+        public static void main(String[] args) {
+            Double[] prueba={7.2,4.5,3.1,6.5,9.2};
+            
+            System.out.println(arregloToString(prueba,prueba.length));
+            quickSort(prueba,0,prueba.length-1);
+            System.out.println(arregloToString(prueba,prueba.length));
+    }
 }

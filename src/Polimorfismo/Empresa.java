@@ -1,12 +1,17 @@
 package Polimorfismo;
 
 import Herencia.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
  * @author robot
  */
-public class Empresa {
+public class Empresa implements java.io.Serializable{
     private String nombre;
     private Persona dueño;
     private Empleado[] empleados;
@@ -123,13 +128,40 @@ public class Empresa {
             cad.append("\n\n"+empleados[i].toString());
         return cad.toString();
     }
+    private static Empresa leeArchivo(String nom){
+        Empresa res;
+        
+        try(ObjectInputStream ent=new ObjectInputStream(new FileInputStream(nom))){
+            res=(Empresa) ent.readObject();
+        }catch(IOException | ClassNotFoundException e){
+            res=null;
+            System.err.print(e);
+        }
+        return res;
+    }
+    private static boolean escribeArchivo(Empresa emp,String nom){
+        boolean res;
+        
+        try(ObjectOutputStream sal=new ObjectOutputStream(new FileOutputStream(nom))){
+            sal.writeObject(emp);
+            res=true;
+        }catch(IOException e){
+            res=false;
+            System.err.print(e);
+        }
+        return res;
+    }
     
     public static void main(String[] args) {
-        Empresa emp1=new Empresa("El Arroyo","Raúl Rodolfo","Sin calle",1945);
-        emp1.altaEmpleado("Juan", "Calle 2 345", 1976, 5740, "Finanzas", "5546382993");
-        emp1.altaEmpleado("Alberto", "Calle 3 456", 1984, 3500, 3);
-        emp1.altaEmpleado("Sancho", "Calle 8 sin num", 1954, 10890, "Ingeniería", "5534362397");
-        emp1.altaEmpleado("Ana", "Calle 15 6", 1987, 13740, "Dirección", "5546382973");
+        Empresa emp1=leeArchivo("Empresa.obj");
+        if(emp1==null){
+            System.out.println(false);
+            emp1=new Empresa("El Arroyo","Raúl Rodolfo","Sin calle",1945);
+            emp1.altaEmpleado("Juan", "Calle 2 345", 1976, 5740, "Finanzas", "5546382993");
+            emp1.altaEmpleado("Alberto", "Calle 3 456", 1984, 3500, 3);
+            emp1.altaEmpleado("Sancho", "Calle 8 sin num", 1954, 10890, "Ingeniería", "5534362397");
+            emp1.altaEmpleado("Ana", "Calle 15 6", 1987, 13740, "Dirección", "5546382973");
+        }
         
         System.out.println(emp1.toString());
         System.out.println(emp1.reporteAdmins());
@@ -138,5 +170,6 @@ public class Empresa {
         System.out.println(emp1.reporteAdmins());
         System.out.println(emp1.actualizaDepartamentoAdmin(101, "Sistemas"));
         System.out.println(emp1.toString());
+        System.out.println(escribeArchivo(emp1,"Empresa.obj"));
     }
 }
