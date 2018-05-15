@@ -40,6 +40,7 @@ public abstract class Empleado extends Persona implements Comparable{
         cad.append("\n\t      Sueldo base: "+sueldoBase);
         return cad.toString();
     }
+    @Override
     public int compareTo(Object otro){
         Empleado em=(Empleado)otro;
         return this.claveEmpleado-em.claveEmpleado;
